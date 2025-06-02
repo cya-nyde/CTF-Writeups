@@ -6,17 +6,15 @@ Abstracted POC scripts for (retired) HackTheBox and TryHackMe CTF challenges. A 
 Tools
 -----
 
-### Nmap
+### [Nmap](https://nmap.org/)
+
+
 
 #### Ping all devices on network
 
-* -sn flag disables port scan
+* <strong>-sn</strong> flag disables port scan
 * ping scan only
-* may want to use ip addr / ifconfig / ipconfig first to find local subnet if using as an IP scanner
+* may want to use <strong>ip addr / ifconfig / ipconfig</strong> first to find local subnet if using as an IP scanner
 * Utilizes CIDR notation
-    * Example: 192.168.0.0/24 (all IPs on the 192.168.0 subnet)
-> nmap -sn x.x.x.x
-
-Services
---------
-
+    > Example: 192.168.0.0/24 (all IPs on the 192.168.0 subnet)
+* <code>nmap -sn x.x.x.x</code>
