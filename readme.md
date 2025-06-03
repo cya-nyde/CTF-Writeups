@@ -8,9 +8,7 @@ Tools
 
 ### [Nmap](https://nmap.org/)
 
-<p>
-    Can be installed with <code>sudo apt install nmap</code>
-</p>
+<p>Can be installed with <code>sudo apt install nmap</code></p>
 
 #### Syntax
 
@@ -38,9 +36,7 @@ Tools
 
 ### [ExploitDB](https://www.exploit-db.com/)
 
-<p>
-    Can be installed with <code>sudo apt install exploitdb</code>
-</p>
+<p>Can be installed with <code>sudo apt install exploitdb</code></p>
 
 #### Syntax
 
@@ -57,5 +53,10 @@ Services
 
 ### SSH
 
-Can be installed and enabled with <code>sudo apt install openssh</code> and <code>sudo systemctl enable openssh</code> (may require firewall configuration to work)
+#### Syntax
 
+<code>ssh \<username>@\<target ip></code>
+
+* With no additional flags, password will be prompted after pressing enter
+* Can be installed and enabled in Linux with <code>sudo apt install openssh</code> and <code>sudo systemctl enable openssh</code> (may require firewall configuration to work)
+* Must be installed as an optional feature in modern versions of Windows
