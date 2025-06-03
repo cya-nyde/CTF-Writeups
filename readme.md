@@ -12,6 +12,10 @@ Tools
     Can be installed with <code>sudo apt install nmap</code>
 </p>
 
+#### Syntax
+
+<code>nmap \<flags> \<ip> </code>
+
 #### Ping all devices on network
 
 * **-sn** flag disables port scan
@@ -21,20 +25,30 @@ Tools
     > Example: 192.168.0.0/24 (all IPs on the 192.168.0 subnet)
 
 <code>
-    nmap -sn *x.x.x.x*
+    nmap -sn <em>x.x.x.x</em>
 </code>
 
 #### Extended Ping Scan
 
 * **-p** flag enables port selection
 * **-p-** flag scans *all* ports
-* Recommended to use **-T5** or **--min-rate** flag to speed up process
+* Recommended to use **-T** or **--min-rate** flag to speed up process
+    * **-T** 1-5 selects timing template - 5 is the fastest
+    * **--min-rate** sends packets no slower than the number it is set equal to
+
+<code>
+    nmap <em>x.x.x.x</em> -p- -T5
+</code>
 
 ### [ExploitDB](https://www.exploit-db.com/)
 
 <p>
     Can be installed with <code>sudo apt install exploitdb</code>
 </p>
+
+#### Syntax
+
+<code>searchsploit \<service name> \<service version></code>
 
 * lookup CVEs from CLI
 * search by service name
@@ -43,3 +57,11 @@ Tools
 <code>
 searchsploit <em>servicename serviceversion</em>
 </code>
+
+Services
+--------
+
+### SSH
+
+Can be installed and enabled with <code>sudo apt install openssh</code> and <code>sudo systemctl enable openssh</code> (may require firewall configuration to work)
+
