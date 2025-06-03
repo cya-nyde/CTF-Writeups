@@ -24,9 +24,7 @@ Tools
 * Utilizes CIDR notation
     > Example: 192.168.0.0/24 (all IPs on the 192.168.0 subnet)
 
-<code>
-    nmap -sn <em>x.x.x.x</em>
-</code>
+<code>nmap -sn <em>x.x.x.x</em></code>
 
 #### Extended Ping Scan
 
@@ -36,9 +34,7 @@ Tools
     * **-T** 1-5 selects timing template - 5 is the fastest
     * **--min-rate** sends packets no slower than the number it is set equal to
 
-<code>
-    nmap <em>x.x.x.x</em> -p- -T5
-</code>
+<code>nmap <em>x.x.x.x</em> -p- -T5</code>
 
 ### [ExploitDB](https://www.exploit-db.com/)
 
@@ -54,9 +50,7 @@ Tools
 * search by service name
     > Example: searchsploit Icecast 2.1
 
-<code>
-searchsploit <em>servicename serviceversion</em>
-</code>
+<code>searchsploit <em>servicename serviceversion</em></code>
 
 Services
 --------
