@@ -6,12 +6,19 @@ CTF Writeups
 
 ### Structure
 
-- Platform/
-    - Box/
-        - Writeup
-        - Script
-- Docs/
-    - notes
+```
+
+├── docs\
+│   └── notes.md
+├── HTB\
+│   └── academy-publicExploits\
+│       └── apache2.4.41.sh
+├── TryHackMe\
+    └── Ice\
+        ├── Ice.sh
+        └── readme.md
+└──readme.md
+```
 
 ### Disclaimers
 
