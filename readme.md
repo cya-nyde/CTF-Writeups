@@ -1,10 +1,12 @@
 CTF Writeups
 ============
 
-#### This repository is a collection of CTF boxes, rooms, and challenges that I have solved or am working on. You can find detailed writeups and notes as well as an automated script to retrieve the flag in respective folder.
+#### This repository is a collection of CTF boxes, rooms, and challenges that I have solved or am working on. You can find detailed writeups and notes as well as an automated script to retrieve the flag in each respective folder.
+
+#### My notes on tools, services, and techniques can be found here: **[notes.md](docs/notes.md)**
 
 
-### Structure
+### Contents
 
 ```
 ├── docs\
