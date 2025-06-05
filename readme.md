@@ -4,12 +4,14 @@ CTF Writeups
 #### This repository is a collection of CTF boxes, rooms, and challenges that I have solved or am working on. You can find detailed writeups and notes as well as an automated script to retrieve the flag in respective folder.
 
 
-### Directory
+### Structure
 
-- HTB
-
-- THM
-    - Ice
+- Platform/
+    - Box/
+        - Writeup
+        - Script
+- Docs/
+    - notes
 
 ### Disclaimers
 
