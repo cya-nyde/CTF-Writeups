@@ -1,8 +1,14 @@
 #!/bin/bash
-# Link: https://tryhackme.com/r/room/ice
 
-targetip=10.10.38.186
-vpnip=10.2.117.26
+# | Ice Room - TryHackMe Writeup
+# | Link: https://tryhackme.com/r/room/ice
+# | Cya-nyde
+
+source config.sh
+
+targetip=$tIp
+vpnip=$lIp
+targetPort=$tPort
 
 sudo nmap -sV -vv $targetip
 
