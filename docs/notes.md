@@ -1,3 +1,10 @@
+Cya-nyde's Notes
+================
+
+A collection of information regarding tools, exploits, services, tactics, etc. that I personally found helpful and/or important. 
+
+\***Not intended as a full cheatsheet**\*
+
 Tools
 -----
 
