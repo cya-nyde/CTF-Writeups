@@ -7,16 +7,15 @@ CTF Writeups
 ### Structure
 
 ```
-
 ├── docs\
 │   └── notes.md
 ├── HTB\
 │   └── academy-publicExploits\
 │       └── apache2.4.41.sh
 ├── TryHackMe\
-    └── Ice\
-        ├── Ice.sh
-        └── readme.md
+│   └── Ice\
+│       ├── Ice.sh
+│       └── readme.md
 └──readme.md
 ```
 
