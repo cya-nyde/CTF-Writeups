@@ -56,9 +56,18 @@ Tools
 * search by service name
     > Example: searchsploit Icecast 2.1
 
-<code>
-searchsploit <em>servicename serviceversion</em>
-</code>
+### [MetaSploit](https://www.metasploit.com/)
+
+#### Syntax
+
+<code>msfconsole</code>
+
+- <code>search</code> to search for modules
+- <code>use</code> to load a module
+
+#### Helpful Modules
+
+- 
 
 Services
 --------
