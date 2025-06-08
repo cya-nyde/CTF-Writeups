@@ -9,16 +9,23 @@ CTF Writeups
 ### Contents
 
 ```
-├── docs\
+.
+├── docs
 │   └── notes.md
-├── HTB\
-│   └── academy-publicExploits\
-│       └── apache2.4.41.sh
-├── TryHackMe\
-│   └── Ice\
-│       ├── Ice.sh
+├── HTB
+│   ├── academy-publicExploits
+│   │   └── apache2.4.41.sh
+│   └── lame
+│       ├── lame.sh
 │       └── readme.md
-└──readme.md
+├── readme.md
+└── TryHackMe
+    ├── ice
+    │   ├── ice.sh
+    │   └── readme.md
+    └── linux-privesc
+        ├── linuxPrivesc.sh
+        └── readme.md
 ```
 
 ### Disclaimers
