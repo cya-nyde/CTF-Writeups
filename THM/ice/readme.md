@@ -1,5 +1,5 @@
 [ice - TryHackMe](https://tryhackme.com/room/ice) | Cya-nyde
-===============================
+============================================================
 
 Deploy & hack into a Windows machine, exploiting a very poorly secured media server.
 
