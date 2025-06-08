@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# | Ice Room - TryHackMe Writeup
+# | ice - TryHackMe
 # | Link: https://tryhackme.com/r/room/ice
 # | Cya-nyde
-
-source config.sh
 
 targetip=$tIp
 vpnip=$lIp
