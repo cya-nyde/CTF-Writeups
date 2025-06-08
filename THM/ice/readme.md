@@ -14,18 +14,19 @@ Recon is performed using nmap with the **-sV** flag to enumerate service version
 
 We can see the following ports are open on this machine:
 
-- 135/tcp   open  msrpc        Microsoft Windows RPC
-- 139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
-- 445/tcp   open  microsoft-ds Microsoft Windows 7 - 10 microsoft-ds (workgroup: WORKGROUP)
-- 3389/tcp  open  tcpwrapped
-- 5357/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-- 8000/tcp  open  http         Icecast streaming media server
-- 49152/tcp open  msrpc        Microsoft Windows RPC
-- 49153/tcp open  msrpc        Microsoft Windows RPC
-- 49154/tcp open  msrpc        Microsoft Windows RPC
-- 49158/tcp open  msrpc        Microsoft Windows RPC
-- 49159/tcp open  msrpc        Microsoft Windows RPC
-- 49160/tcp open  msrpc        Microsoft Windows RPC
+```
+135/tcp   open  msrpc        Microsoft Windows RPC
+139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds Microsoft Windows 7 - 10 microsoft-ds (workgroup: WORKGROUP)
+3389/tcp  open  tcpwrapped
+5357/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+8000/tcp  open  http         Icecast streaming media server 49152/tcp open  msrpc        Microsoft Windows RPC
+49153/tcp open  msrpc        Microsoft Windows RPC
+49154/tcp open  msrpc        Microsoft Windows RPC
+49158/tcp open  msrpc        Microsoft Windows RPC
+49159/tcp open  msrpc        Microsoft Windows RPC
+49160/tcp open  msrpc        Microsoft Windows RPC
+```
 
 We are also given the following service info:
 
