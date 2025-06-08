@@ -19,7 +19,7 @@ CTF Writeups
 │       ├── lame.sh
 │       └── readme.md
 ├── readme.md
-└── TryHackMe
+└── THM
     ├── ice
     │   ├── ice.sh
     │   └── readme.md
