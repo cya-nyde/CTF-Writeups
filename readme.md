@@ -4,6 +4,7 @@ CTF Writeups
 - This repository is a collection of CTF boxes, rooms, and challenges that I have solved or am currently working on
 - You can find detailed writeups and notes as well as an automated script to retrieve the flag in each respective folder
 - Every CTF-specific script references a "config.sh" file within the writeup's directory that you will need to populate with the IP (and port if necessary) of your target machine
+    - My config files have been intentionally excluded from this repository
 - Please explore the readme files for each room before using the script
 
 #### My notes on tools, services, and techniques can be found here: **[notes.md](docs/notes.md)**
@@ -14,16 +15,18 @@ CTF Writeups
 ```
 .
 ├── docs
+│   ├── configExample.sh
 │   └── notes.md
 ├── HTB
-│   ├── academy-publicExploits
-│   │   └── apache2.4.41.sh
+│   ├── academy-challenges
+│   │   └── public-exploits.sh
 │   └── lame
 │       ├── lame.sh
 │       └── readme.md
 ├── readme.md
 └── THM
     ├── ice
+    │   ├── config.sh
     │   ├── ice.sh
     │   └── readme.md
     └── linux-privesc
