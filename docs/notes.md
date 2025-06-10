@@ -63,11 +63,19 @@ Tools
 
 #### Helpful Modules
 
-- 
+- **post/multi/recon/local_exploit_suggester** - used after initial access to suggest privilege escalation pathways
+- **post/multi/manage/shell_to_meterpreter** - script to upgrade simple shell to meterpreter shell, making it much more stable
 
 Services
 --------
 
 ### SSH
 
-Can be installed and enabled with <code>sudo apt install openssh</code> and <code>sudo systemctl enable openssh</code> (may require firewall configuration to work)
+Can be installed and enabled with <code>sudo apt install openssh</code> and <code>sudo systemctl enable openssh</code> (may require firewall configuration on client side to work)
+
+#### Syntax
+
+`ssh username@hostip`
+
+- Unless specified in line (bad practice), will prompt for password upon connection
+- Often enabled when **port 22** is open
