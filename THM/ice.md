@@ -3,7 +3,9 @@
 
 Deploy & hack into a Windows machine, exploiting a very poorly secured media server.
 
-- Room created by DarkStar7471
+## Credits
+
+- Room created by [DarkStar7471](https://tryhackme.com/p/DarkStar7471)
 - Room type: Free
 
 ## Recon
