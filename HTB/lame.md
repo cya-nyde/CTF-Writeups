@@ -68,7 +68,7 @@ PORT    STATE SERVICE     VERSION
     - `run` or `exploit` to start
     - Command shell opened
 
-> `whoami` returns *root*
+> `whoami` returns **root**
 
 ### Submit the flag located in the makis user's home directory.
 
