@@ -75,7 +75,7 @@ Can be installed and enabled with <code>sudo apt install openssh</code> and <cod
 
 #### Syntax
 
-`ssh username@hostip`
+`ssh <username>@x.x.x.x`
 
 - Unless specified in line (bad practice), will prompt for password upon connection
 - Often enabled when **port 22** is open
