@@ -13,8 +13,8 @@ CTF Writeups
 ├── docs
 │   └── notes.md
 ├── HTB
-│   ├── academy-publicExploits
-│   │   └── apache2.4.41.sh
+│   ├── academy-challenges
+│   │   └── public-exploits.sh
 │   └── lame
 │       ├── lame.sh
 │       └── readme.md

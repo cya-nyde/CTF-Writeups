@@ -63,7 +63,9 @@ Tools
 
 #### Helpful Modules
 
-- 
+- **post/multi/recon/local_exploit_suggester** - can run locally to search for exploits based on service versions found
+- **multi/manage/shell_to_meterpreter** - upgrades standard shell to meterpreter shell
+    - Can also be done using `sessions -u <session number>` or `sessions -u -l` to upgrade the most recently opened session
 
 Services
 --------
@@ -71,3 +73,10 @@ Services
 ### SSH
 
 Can be installed and enabled with <code>sudo apt install openssh</code> and <code>sudo systemctl enable openssh</code> (may require firewall configuration to work)
+
+#### Syntax
+
+<code>ssh \<username>@x.x.x.x</code>
+
+- Best practice not to specify password in plaintext within the command
+- SSH will prompt you for password to connect after confirming connection with the server
