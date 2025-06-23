@@ -74,6 +74,17 @@ Tools
 - **i** - Cursor right
 - **j** - Cursor down
 - **k** - Cursor Up
+- **$** - End of line
+- **0** - Beginning of line
+- **w** - Forward one word
+- **b** - Backwards one word
+- **G** - End of file
+- **gg** - Beginning of file
+- **\`.** - Last edit
+
+#### Insert Mode Keys
+
+
 
 Services
 --------
