@@ -66,6 +66,15 @@ Tools
 - **post/multi/recon/local_exploit_suggester** - used after initial access to suggest privilege escalation pathways
 - **post/multi/manage/shell_to_meterpreter** - script to upgrade simple shell to meterpreter shell, making it much more stable
 
+### [Vim](https://www.vim.org/)
+
+#### Command Mode Keys
+
+- **h** - Cursor left
+- **i** - Cursor right
+- **j** - Cursor down
+- **k** - Cursor Up
+
 Services
 --------
 
