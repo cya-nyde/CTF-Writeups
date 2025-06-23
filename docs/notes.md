@@ -70,17 +70,28 @@ Tools
 
 #### Command Mode Keys
 
-- **h** - Cursor left
-- **i** - Cursor right
-- **j** - Cursor down
-- **k** - Cursor Up
-- **$** - End of line
-- **0** - Beginning of line
-- **w** - Forward one word
-- **b** - Backwards one word
-- **G** - End of file
-- **gg** - Beginning of file
-- **\`.** - Last edit
+- Movement
+    - **h** - Cursor left
+    - **i** - Cursor right
+    - **j** - Cursor down
+    - **k** - Cursor Up
+    - **$** - End of line
+    - **0** - Beginning of line
+    - **w** - Forward one word
+    - **b** - Backwards one word
+    - **G** - End of file
+    - **gg** - Beginning of file
+    - **\`.** - Last edit
+- Editing
+    - **x** - delete character
+    - **u** - undo
+    - **Ctrl r** - redo
+    - **d** - delete mode
+        - **dw** - delete word from cursor onward
+        - **d0** - delete to beginning of a line (backwards)
+        - **d$** - delete to end of a line (forwards)
+        - **dgg** - delete to the beginning of the file (backwards)
+        - **dG** - delete to the end of the file (forwards)
 
 #### Insert Mode Keys
 
