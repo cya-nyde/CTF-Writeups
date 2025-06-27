@@ -95,7 +95,25 @@ Tools
 
 #### Insert Mode Keys
 
+- Type as normal and add/delete line breaks
+- Use ctrl + c to or esc to return to *Command Mode*
 
+#### Slash and Dot (recommended)
+
+- **/** to enter search mode
+    - type search text, then enter
+    - type **cgn** and the the replacement text
+    - esc to return to standard mode
+    - **n** to find the next instance of the original text
+
+#### Substitute Command - **:s**
+
+`:s/<original text>/<replacement text>/<optional modifiers>`
+
+- Options
+    - **g** replaces all occurences of the <original text> on that line
+    - **i** ignores case for search
+    - **c** confirms each replacement before a change is made
 
 Services
 --------
