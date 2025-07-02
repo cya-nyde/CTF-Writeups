@@ -51,7 +51,7 @@ We are fed this url after selecting "Security Snapshot" on the webpage: `http://
 - When we authenticate to SSH using Nathan's credentials, we are in his home directory by default
 - Using `ls`, we can find the name of the file containing the user flag (user.txt)
 
->  <details><summary><code>cat user.txt</code> to get the flag: </summary></details>
+>  <details><summary><code>cat user.txt</code> to get the flag: </summary>3fdaedf7b90fc1afaf506f4a759d9609</details>
 
 ### What is the full path to the binary on this machine has special capabilities that can be abused to obtain root privileges?
 
