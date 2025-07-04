@@ -93,6 +93,14 @@ Tools
         - **dgg** - delete to the beginning of the file (backwards)
         - **dG** - delete to the end of the file (forwards)
 
+- Copy and Pasting
+    - **yy** - copy line
+    - **y$** - copy to the end of the line
+    - **yiw** - copy current word without space
+    - **p** - paste after
+    - **P** - paste before
+    - **gp** - paste after and move cursor after pasted text
+
 #### Insert Mode Keys
 
 - Type as normal and add/delete line breaks
