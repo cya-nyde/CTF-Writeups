@@ -38,6 +38,13 @@ Tools
 
 <code>nmap <em>x.x.x.x</em> -p- -T5</code>
 
+#### Scripts
+
+- **smb-os-discovery** - returns hostname for devices using SMB
+- **http-enum** - enumerates web server directories and vulnerabilities
+- **vulners** - enumerates vulnerabilities
+- **dns-zone-transfer** - attempts DNS zone transfer to show backend information
+
 ### [ExploitDB](https://www.exploit-db.com/)
 
 <p>
