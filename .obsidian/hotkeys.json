@@ -53,7 +53,7 @@
       "key": "L"
     }
   ],
-  "obsidian-git:push": [
+  "obsidian-git:commit-push-specified-message": [
     {
       "modifiers": [
         "Mod",

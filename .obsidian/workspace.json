@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "readme.md",
+                "file": "HTB/cap.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "readme"
+              "title": "cap"
             }
           }
         ]
@@ -130,12 +130,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Bible/The Book of James 17.md",
+                "file": "HTB/cap.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from The Book of James 17"
+              "title": "Outgoing links from cap"
             }
           },
           {
@@ -159,12 +159,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "HTB/cap.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of cap"
             }
           },
           {
@@ -173,17 +174,16 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 287.5,
-    "collapsed": true
+    "width": 287.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -198,6 +198,8 @@
   },
   "active": "12d90f45ac7c104d",
   "lastOpenFiles": [
+    "HTB.md",
+    "HTB/cap.md",
     "readme.md",
     "Bible/The Book of James Day 17.md",
     "Cyber/HTB Academy/Untitled.md",
