@@ -1,5 +1,4 @@
-[Lame](https://app.hackthebox.com/machines/1) | Cyanyde
-=======================================================
+# [Lame](https://app.hackthebox.com/machines/1) | Cyanyde
 
  Lame is an easy Linux machine, requiring only one exploit to obtain root access. It was the first machine published on Hack The Box and was often the first machine for new users prior to its retirement.
 
