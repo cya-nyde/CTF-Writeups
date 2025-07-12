@@ -1,5 +1,4 @@
-CTF Writeups
-============
+# CTF Writeups
 
 ### This repository is a collection of CTF boxes, rooms, and challenges that I have solved or am currently working on.  You can find detailed writeups and notes under the folder for each platform.
 
