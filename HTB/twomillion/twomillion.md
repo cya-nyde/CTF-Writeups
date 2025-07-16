@@ -32,13 +32,7 @@ TwoMillion is an Easy difficulty Linux box that was released to celebrate reachi
     - After throwing a few test attempt credentials at the login page, we can inspect the network requests
     - The request body looks standard, but when given an incorrect login, it returns http://2million.htb/login?error=User+not+found
         - When replacing "User+not+found" with different text, it reflects on the webpage as it is displayed - if not sanitized, could potentially be a way to leak information
-        ![lol](/HTB/twomillion/250714_16h48m23s_screenshot.png)
-- The /js/inviteapi.min.js directory includes the source code to generate an invite code
-```
-eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('1 i(4){h 8={"4":4};$.9({a:"7",5:"6",g:8,b:\'/d/e/n\',c:1(0){3.2(0)},f:1(0){3.2(0)}})}1 j(){$.9({a:"7",5:"6",b:\'/d/e/k/l/m\',c:1(0){3.2(0)},f:1(0){3.2(0)}})}',24,24,'response|function|log|console|code|dataType|json|POST|formData|ajax|type|url|success|api/v1|invite|error|data|var|verifyInviteCode|makeInviteCode|how|to|generate|verify'.split('|'),0,{}))
-```
-
-#### Feroxbuster Results
+        ![lol](/HTB/twomillion/assets/250714_16h48m23s_screenshot.png)
 
 We can see the following entries from our basic Feroxbuster scan return a 200 response:
 
@@ -57,3 +51,68 @@ We can see the following entries from our basic Feroxbuster scan return a 200 re
 200      GET     1242l     3326w    64952c http://2million.htb/
 200      GET       46l      152w     1674c http://2million.htb/404
 ```
+
+The /js/inviteapi.min.js directory includes the following source code:
+```
+eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('1 i(4){h 8={"4":4};$.9({a:"7",5:"6",g:8,b:\'/d/e/n\',c:1(0){3.2(0)},f:1(0){3.2(0)}})}1 j(){$.9({a:"7",5:"6",b:\'/d/e/k/l/m\',c:1(0){3.2(0)},f:1(0){3.2(0)}})}',24,24,'response|function|log|console|code|dataType|json|POST|formData|ajax|type|url|success|api/v1|invite|error|data|var|verifyInviteCode|makeInviteCode|how|to|generate|verify'.split('|'),0,{}))
+```
+
+We can make this easier to read using https://beautifier.io/ which will output:
+
+```
+function verifyInviteCode(code) {
+    var formData = {
+        "code": code
+    };
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        data: formData,
+        url: '/api/v1/invite/verify',
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(response) {
+            console.log(response)
+        }
+    })
+}
+
+function makeInviteCode() {
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: '/api/v1/invite/how/to/generate',
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(response) {
+            console.log(response)
+        }
+    })
+}
+```
+
+## Exploitation
+
+- Let's try to create an account with the information we've found so far
+
+`curl -X POST 2million.htb/api/v1/invite/how/to/generate | jq` gives us the content of the /how/to/generate directory as json
+
+```
+{
+  "0": 200,
+  "success": 1,
+  "data": {
+    "data": "Va beqre gb trarengr gur vaivgr pbqr, znxr n CBFG erdhrfg gb /ncv/i1/vaivgr/trarengr",
+    "enctype": "ROT13"
+  },
+  "hint": "Data is encrypted ... We should probbably check the encryption type in order to decrypt it..."
+}
+```
+
+- There is a hint at the bottom that suggests we should attempt to decrypt the data based on the provided encryption type
+- We can put `"Va beqre gb trarengr gur vaivgr pbqr, znxr n CBFG erdhrfg gb /ncv/i1/vaivgr/trarengr"` into CyberChef with an encryption type of `ROT13` to decrypt it
+    - In order to generate the invite code, make a POST request to /api/v1/invite/generate
+
+`curl -X POST 2million.htb/api/v1/invite/generate`
