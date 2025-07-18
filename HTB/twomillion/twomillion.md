@@ -115,4 +115,6 @@ function makeInviteCode() {
 - We can put `"Va beqre gb trarengr gur vaivgr pbqr, znxr n CBFG erdhrfg gb /ncv/i1/vaivgr/trarengr"` into CyberChef with an encryption type of `ROT13` to decrypt it
     - In order to generate the invite code, make a POST request to /api/v1/invite/generate
 
-`curl -X POST 2million.htb/api/v1/invite/generate`
+- `curl -X POST 2million.htb/api/v1/invite/generate` gives us an invite code, but it seems to be encoded
+- Putting it into CyberChef and trying a few combinations, we discover it is *base64* encoded
+    - We can use the decoded invite code to create an account
