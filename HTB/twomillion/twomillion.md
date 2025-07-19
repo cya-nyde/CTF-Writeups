@@ -118,3 +118,12 @@ function makeInviteCode() {
 - `curl -X POST 2million.htb/api/v1/invite/generate` gives us an invite code, but it seems to be encoded
 - Putting it into CyberChef and trying a few combinations, we discover it is *base64* encoded
     - We can use the decoded invite code to create an account
+- After creating an account, I'm able to see a logged in dashboard with many familiar HTB menus
+
+![dashboard](/HTB/twomillion/assets/250718_19h49m43s_screenshot.png)
+
+- Upon investigation, many of the links are broken and redirect back to /home#
+
+- One thing that does work is the "access" page under Labs
+- What's even more interesting is that you can generate a VPN connection file
+    - You are not able to change your region for the VPN, but you can download a .ovpn file
