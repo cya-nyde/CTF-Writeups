@@ -48,3 +48,8 @@ Learn the fundamentals of Linux privilege escalation. From enumeration to exploi
 - Use `locate flag1.txt` to find the flag
 
 > <details><summary><code>cat /home/matt/flag1.txt</code> gives us </summary>THM-28392872729920</details>
+
+## Sudo
+
+### How many programs can the user "karen" run on the target system with sudo rights?
+
