@@ -53,3 +53,31 @@ Learn the fundamentals of Linux privilege escalation. From enumeration to exploi
 
 ### How many programs can the user "karen" run on the target system with sudo rights?
 
+> `sudo -l` gives us **3** binaries that the user *karen* is allowed to run as sudo on the machine
+
+- /usr/bin/find
+- /usr/bin/less
+- /usr/bin/nano
+
+### What is the content of the flag2.txt file?
+
+- Use GTFObins on each of these binaries to try and escalate privileges
+    - Try nano first, since it lets you directly edit text
+    - Let's see if we can use nano to add ourselves as a sudoer
+    - Since we have sudo access to nano, we can `sudo nano /etc/sudoers` and add the line `karen ALL=(ALL:ALL) ALL` to give ourselves root access on the machine
+- After gaining root, `find / -name flag2.txt` shows us where flag2 is located
+
+> <details><summary><code>cat /home/ubuntu/flag2.txt</code> to get </summary>THM-402028394</details>
+
+### How would you use Nmap to spawn a root shell if your user had sudo rights on nmap?
+
+GTFObins has a one-liner that allows you to run commands in nmap as sudo (if you have rights to run the script as sudo):
+
+> `sudo namp --interactive`
+
+### What is the hash of frank's password?
+
+- As root, we can `cat /etc/shadow` to show us the password hashes of every user
+
+> Frank's hash is: `$6$2.sUUDsOLIpXKxcr$eImtgFExyr2ls4jsghdD3DHLHHP9X50Iv.jNmwo/BJpphrPRJWjelWEz2HH.joV14aDEwW1c3CahzB1uaqeLR1`
+
