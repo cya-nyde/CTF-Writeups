@@ -81,3 +81,20 @@ GTFObins has a one-liner that allows you to run commands in nmap as sudo (if you
 
 > Frank's hash is: `$6$2.sUUDsOLIpXKxcr$eImtgFExyr2ls4jsghdD3DHLHHP9X50Iv.jNmwo/BJpphrPRJWjelWEz2HH.joV14aDEwW1c3CahzB1uaqeLR1`
 
+## SUID
+
+### Which user shares the name of a great comic book writer?
+
+- The user karen is allowed to cat `/etc/passwd`, showing a list of users
+
+> The user that immediately stands out is **gerryconway**.
+
+### What is the password of user2?
+
+- Used `find / -type f -perm -04000 -ls 2>/dev/null`, to get a list of binaries with SUID bits set
+- Out of the ones listed, many are stored in the /snap directory, which will likely not be useful
+    - `/usr/bin/base64` is the only binary that has a SUID bit set and is not in a snap directory that has a listing in GTFOBins for an SUID bit
+- Used base64 to encode then decode /etc/shadow
+    - `base64 /etc/shadow | base64 --decode`
+    - We get this password hash for user2: `$6$m6VmzKTbzCD/.I10$cKOvZZ8/rsYwHd.pE099ZRwM686p/Ep13h7pFMBCG4t7IukRqc/fXlA1gHXh9F2CbwmD4Epi1Wgh.Cl.VV1mb/`
+- We can crack user2's hash using hashcat
