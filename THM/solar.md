@@ -77,4 +77,3 @@ Snippet of log:
 
 ### What user are you?
 
-
