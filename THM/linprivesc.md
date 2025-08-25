@@ -188,3 +188,30 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 ### What is the content of the flag5.txt file?
 
+- `/home/karen/backup.sh` is accessible by our user and runs every minute
+- Edit `backup.sh` and add a reverse shell
+    - Some examples can be found [here](https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet)
+- Open a listener on attack machine - `nc -lvnp *port*`
+- Once reverse shell as root reaches out to your attack machine, `find / -name "flag5.txt"` and `cat flag5.txt`
+
+ > <details><summary><code>cat flag5.txt</code> returns </summary>THM-383000283</details>
+
+ ### What is Matt's password?
+
+ - As root, 
+
+ ## PATH
+
+ - `echo $PATH` to show path variable
+ - Show folders karen can write to with `find / -writable 2>/dev/null | cut -d "/" -f 2,3 | grep -v proc | sort -u`
+    - `2>/dev/null` discards errors to null
+    - `cut -d "/" -f 2,3` sets "/" as the delimiter and returns only the second and third fields
+    - `grep -v proc` excludes results related to running processes
+    - `sort -u` cuts out duplicates
+
+### What is the odd folder you have write access for?
+
+> karen has write access to **<code>/home/murdoch</code>**
+
+### What is the content fo the flag6.txt file?
+
