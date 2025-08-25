@@ -192,13 +192,16 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 - Edit `backup.sh` and add a reverse shell
     - Some examples can be found [here](https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet)
 - Open a listener on attack machine - `nc -lvnp *port*`
-- Once reverse shell as root reaches out to your attack machine, `find / -name "flag5.txt"` and `cat flag5.txt`
+- Once reverse shell as root reaches out to your attack machine, `find / -name "flag5.txt"`
 
- > <details><summary><code>cat flag5.txt</code> returns </summary>THM-383000283</details>
+ > <details><summary><code>cat /home/ubuntu/flag5.txt</code> returns </summary>THM-383000283</details>
 
  ### What is Matt's password?
 
- - As root, 
+ - As root, `cat /etc/shadow` to get hashes and `cat /etc/passwd` to get user list
+ - After getting files to attack machine, use `unshadow` to get crackable hashes
+ 
+ > `john *unshadow output*` gives us **123456** as matt's password
 
  ## PATH
 
@@ -213,5 +216,5 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 > karen has write access to **<code>/home/murdoch</code>**
 
-### What is the content fo the flag6.txt file?
+### What is the content of the flag6.txt file?
 
