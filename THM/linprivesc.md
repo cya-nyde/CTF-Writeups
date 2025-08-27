@@ -218,3 +218,18 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 ### What is the content of the flag6.txt file?
 
+- `/home/murdoch` contains `test` and `thm.py`
+    - Running `./test` shows that the script is dependent on a file named "thm" which does not exist
+- `vim thm` to create and edit the required file
+    - The goal is to find a view the contents of `flag6.txt`
+    - Write this simple script within `./thm`:
+```
+#!/bin/bash
+
+loc=$(find / -name "flag6.txt" 2>/dev/null)
+cat $loc
+```
+
+- `./test` should call the script within `/home/murdoch` which calls `./thm` with elevated permissions
+
+ > <details><summary>This chain returns </summary>THM-736628929</details>
