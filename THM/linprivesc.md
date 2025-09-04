@@ -233,3 +233,17 @@ cat $loc
 - `./test` should call the script within `/home/murdoch` which calls `./thm` with elevated permissions
 
  > <details><summary>This chain returns </summary>THM-736628929</details>
+
+ ## NFS
+
+ ### How many mountable shares can you identify on the target system?
+
+ - `cat /etc/exports` to read NFS configuration
+
+ > There are **3** mountable shares in the NFS configuration
+
+ ### How many Shares have the "no_root_squash" option enabled?
+
+ > Out of the 3 shares listed in the NFS configuration file, all **3** have the no_root_squash option enabled
+
+ 
