@@ -76,3 +76,18 @@ Matching Modules
 
 > The full path to the exploit is **exploit/windows/smb/ms17_010_eternalblue**
 
+### Show options and set the one required value. What is the name of this value?
+
+- `use 0` or `use exploit/windows/smb/ms17_010_eternalblue` to use the eternalblue module
+- `show options` to list options
+
+> The only empty option that we need to change is **RHOSTS**
+
+## Escalate
+
+### Research online how to convert a shell to meterpreter shell in metasploit. What is the name of the post module we will use?
+
+- *ctrl + z* to background session after initial foothold on target
+- `search shell to meterpreter` to find module to stabilize shell
+
+> The module to use is called **
