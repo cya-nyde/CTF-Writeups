@@ -8,6 +8,14 @@ A collection of information regarding tools, exploits, services, tactics, etc. t
 Tools
 -----
 
+### [Hashcat] (https://hashcat.net/hashcat/)
+
+Can be installed with `sudo apt install hashcat`
+
+#### Syntax
+
+<code>hashcat -a \<mode> -m \<hash type> \<hash file></code>
+
 ### [Nmap](https://nmap.org/)
 
 <p>
