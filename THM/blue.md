@@ -88,6 +88,19 @@ Matching Modules
 ### Research online how to convert a shell to meterpreter shell in metasploit. What is the name of the post module we will use?
 
 - *ctrl + z* to background session after initial foothold on target
-- `search shell to meterpreter` to find module to stabilize shell
+- `search type:post shell to meterpreter` to find module to stabilize shell
 
-> The module to use is called **
+> The module to use is called **post/multi/manage/shell_to_meterpreter**
+
+### Select this (use MODULE_PATH). Show options, what option are we required to change?
+
+> The option that needs to be set is **SESSION**
+
+- Confirm access level using `getsystem`
+   - Should be running as SYSTEM
+- List running processes using `ps`
+- Migrate to a process with NT AUTHORITY\SYSTEM with `migrate *process id*`
+
+## Cracking
+
+### Within our elevated meterpreter shell, run the command 'hashdump'. This will dump all of the passwords on the machine as long as we have the correct privileges to do so. What is the name of the non-default user? 
