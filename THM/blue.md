@@ -113,3 +113,9 @@ Matching Modules
 - `hashcat temp` to crack the password hash in the temp file
 
 > The cracked password returned from *hashcat* is **alqfna22**
+
+## Find Flags
+
+### Flag 1
+
+> <details><summary><code>cat C:/flag1.txt</code> to get the flag: </summary>flag{access_the_machine}</details>

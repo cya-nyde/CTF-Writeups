@@ -238,12 +238,13 @@ cat $loc
 
  ### How many mountable shares can you identify on the target system?
 
- - `cat /etc/exports` to read NFS configuration
+ - `showmount -e *target ip*` to show mountable shares
 
- > There are **3** mountable shares in the NFS configuration
+ > **3** shares are returned
 
  ### How many Shares have the "no_root_squash" option enabled?
 
  > Out of the 3 shares listed in the NFS configuration file, all **3** have the no_root_squash option enabled
 
- 
+### What is the content of the flag7.txt file?
+
