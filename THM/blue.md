@@ -118,4 +118,25 @@ Matching Modules
 
 ### Flag 1
 
+- `search -f flag*.txt` within Meterpreter shell to locate all flags
+
+```
+Found 3 results...
+==================
+
+Path                                  Size (bytes)  Modified (UTC)
+----                                  ------------  --------------
+c:\Users\Jon\Documents\flag3.txt      37            2019-03-17 19:26:36 +0000
+c:\Windows\System32\config\flag2.txt  34            2019-03-17 19:32:48 +0000
+c:\flag1.txt                          24            2019-03-17 19:27:21 +0000
+```
+
 > <details><summary><code>cat C:/flag1.txt</code> to get the flag: </summary>flag{access_the_machine}</details>
+
+### Flag 2
+
+> <details><summary><code>cat C:/Windows/System32/config/flag2.txt</code> to get the flag: </summary>flag{sam_database_elevated_access}</details>
+
+### Flag 3
+
+> <details><summary><code>cat C:/Users/Jon/Documents/flag3.txt</code> to get the flag: </summary>flag{admin_documents_can_be_valuable}</details>
