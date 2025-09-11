@@ -102,4 +102,6 @@ Check          : Unquoted Service Paths
 ## Access and Escalation without Metasploit
 
 - Use [this](https://www.exploit-db.com/exploits/39161) exploit for initial access to target machine
+- This [netcat binary](https://github.com/andrew-d/static-binaries/blob/master/binaries/windows/x86/ncat.exe) is also provided
+
 
