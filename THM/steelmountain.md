@@ -103,5 +103,7 @@ Check          : Unquoted Service Paths
 
 - Use [this](https://www.exploit-db.com/exploits/39161) exploit for initial access to target machine
 - This [netcat binary](https://github.com/andrew-d/static-binaries/blob/master/binaries/windows/x86/ncat.exe) is also provided
+- The exploit requires a web server hosting a ncat.exe binary to function properly
+    - `sudo python -m http.server 80` to serve all files in current directory as an http server on port 80
 
 
