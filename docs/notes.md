@@ -46,6 +46,19 @@ Can be installed with `sudo apt install hashcat`
 
 <code>nmap <em>x.x.x.x</em> -p- -T5</code>
 
+#### Timing Presets
+
+* `-T<number 1-5>` to select a timing template
+    * The higher the number, the faster and more detectable
+
+<code>nmap -T5 \<target ip></code>
+
+#### Other Helpful Flags
+
+* **-sV** flag enables service version detection
+* **-sC** flag enables default script scan
+    * **--script=** allows you to select a specific script
+
 #### Scripts
 
 - **smb-os-discovery** - returns hostname for devices using SMB
