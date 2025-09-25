@@ -106,4 +106,3 @@ Check          : Unquoted Service Paths
 - The exploit requires a web server hosting a ncat.exe binary to function properly
     - `sudo python -m http.server 80` to serve all files in current directory as an http server on port 80
 
-

