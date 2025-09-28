@@ -41,3 +41,7 @@ Learn how credentials are stored, cached, and exposed in Windows and Active Dire
 
 ## What is svc-app's password?
 
+- `sekurlsa::logonpasswords` within mimikatz will dump credentials stored within LSASS memory
+
+> svc-app's password is **S3rv!c3Acc!**
+
