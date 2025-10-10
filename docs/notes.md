@@ -8,6 +8,19 @@ A collection of information regarding tools, exploits, services, tactics, etc. t
 Tools
 -----
 
+### [Hydra](https://github.com/vanhauser-thc/thc-hydra)
+
+Can be installed with `sudo apt install hydra`
+
+#### Syntax
+
+<code>hydra -l \<USER> -p \<PASS> \<target ip> \<mode> "\<mode options>"</code>
+
+##### **Important Notes:**
+
+- Use `-l` for user if manually specifying and `-L` if using a wordlist
+- Use `-p` for pass if manually specifyign and `-P` if using a wordlist
+
 ### [Hashcat] (https://hashcat.net/hashcat/)
 
 Can be installed with `sudo apt install hashcat`
