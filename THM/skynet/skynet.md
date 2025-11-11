@@ -35,6 +35,19 @@ MAC Address: 16:FF:D6:B9:E6:C1 (Unknown)
 Service Info: Host: SKYNET; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
+### Enumerating SMB
+
+- List smb shares to look for information
+    - `smbclient -L //<target ip>/`
+    - `smbmap -H <target ip> -u anonymous`
+    - *anonymous* share is readable with no credentials
+    - There is a share named *milesdyson*
+        - Suggests a user account with that name
+- `smbclient //<target ip>/anonymous -U anonymous` to access the share
+    - `get attention.txt` to download file
+    - repeat for files in the *log* directory
+    - *log1.txt* appears to be a password list
+
 ### Exploring web server
 
 - Navigating to the server on port 80 in a web browser displays one page with a search bar
@@ -44,14 +57,12 @@ Service Info: Host: SKYNET; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 #### Fuzzing/Discovery
 
 - ffuf to find hidden directories
-    - `ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ -u http://<target ip>/FUZZ`
-    - 301 responses: 
+    - `ffuf -w /usr/share/wordlists/seclists/Discovery/Web-Content/raft-medium-directories.txt:FUZZ -u http://<target ip>/FUZZ -recursion`
+- Multiple 301 endpoints: /admin, /config, /css, /ai
+- Interesting endpoint: /squirrelmail
+    - Leads to login page for squirrelmail
 
-```
-css                     [Status: 301, Size: 312, Words: 20, Lines: 10, Duration: 0ms]
-js                      [Status: 301, Size: 311, Words: 20, Lines: 10, Duration: 0ms]
-admin                   [Status: 301, Size: 314, Words: 20, Lines: 10, Duration: 191ms]
-ai                      [Status: 301, Size: 311, Words: 20, Lines: 10, Duration: 0ms]
-config                  [Status: 301, Size: 315, Words: 20, Lines: 10, Duration: 1ms]
-```
-    - 
+## Initial Access
+
+- Use Hydra to brute force squirrelmail login page
+    - `hydra -l milesdyson -P log1.txt <target ip> http-post-form `
