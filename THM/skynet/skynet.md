@@ -1,4 +1,4 @@
-# [Skynet - TryHackMe](https://tryhackme.com/room/skynet)
+# [Skynet - TryHackMe](https://tryhackme.com/room/skynet) | 0x00FFFF
 
 A vulnerable Terminator themed Linux machine.
 
