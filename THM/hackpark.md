@@ -69,6 +69,10 @@ __VIEWSTATE=mxGh%2BdQ%2F%2BpArh2IP5hEYlvCLap4USWw8NMWpW%2FCdFy6ebKKcxpebQBn520XB
 
 > <code>systeminfo</code> returns shows the OS version is **Windows 2012 R2 (6.3 Build 9600)**
 
+### Can you spot a service running some automated task that could be easily exploited? What is the name of this service?
+
+#### Output of exploit suggester:
+
 ```
 #   Name                                                           Potentially Vulnerable?  Check Result
  -   ----                                                           -----------------------  ------------
@@ -81,3 +85,15 @@ __VIEWSTATE=mxGh%2BdQ%2F%2BpArh2IP5hEYlvCLap4USWw8NMWpW%2FCdFy6ebKKcxpebQBn520XB
  7   exploit/windows/local/ms16_075_reflection_juicy                Yes                      The target appears to be vulnerable.
  8   exploit/windows/local/tokenmagic                               Yes                      The target appears to be vulnerable.
 ```
+
+- Automated tasks are likely carried out in Windows' task scheduler
+- Check in `C:\Program Data (x86)`
+    - *SystemScheduler* folder contains list of binaries
+        - *Events* folder contains logs
+        - `type 20198415519.INI_LOG.txt` to view contents of log
+        - *Message.exe* seems to be run very frequently as Administrator
+
+> The service running automated tasks is **WindowsScheduler**
+
+### What is the name of the binary you're supposed to exploit?
+
