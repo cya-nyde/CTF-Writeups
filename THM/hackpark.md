@@ -97,3 +97,10 @@ __VIEWSTATE=mxGh%2BdQ%2F%2BpArh2IP5hEYlvCLap4USWw8NMWpW%2FCdFy6ebKKcxpebQBn520XB
 
 ### What is the name of the binary you're supposed to exploit?
 
+> The binary being run as Administrator in the logs is **Message.exe**
+
+### What is the user flag?
+
+- 
+
+### What is the root flag?
