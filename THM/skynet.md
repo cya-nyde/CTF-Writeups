@@ -54,7 +54,7 @@ Service Info: Host: SKYNET; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 - No links
 - Search and buttons do not seem functional
 
-#### Fuzzing/Discovery
+#### Fuzzing
 
 - ffuf to find hidden directories
     - `ffuf -w /usr/share/wordlists/seclists/Discovery/Web-Content/raft-medium-directories.txt:FUZZ -u http://<target ip>/FUZZ -recursion`
@@ -72,4 +72,13 @@ Service Info: Host: SKYNET; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 - Most recent email mentions SAMBA password reset
     - *milesdyson* SAMBA password is *)s{A&2Z=F^n_E.B`*
 - `smbclient //<target ip>/milesdyson -U milesdyson`
+
+## Discovery/Collection
+
 - There is one .txt file in *milesdyson*'s share: important.txt
+    - `get /notes/important.txt` to download
+- *important.txt* mentions a hidden endpoint: /45kra24zxs28v3yd
+
+## Recon
+
+- http://<machine ip>/45kra24zxs28v3yd is "Miles Dyson Personal Page"
