@@ -62,7 +62,7 @@ Service Info: Host: SKYNET; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 - Interesting endpoint: /squirrelmail
     - Leads to login page for squirrelmail
 
-## Initial Access
+## Credential Access
 
 - Use Hydra to brute force squirrelmail login page
     - `hydra -l milesdyson -P log1.txt <target ip> http-post-form "/squirrelmail/src/redirect.php:login_username=^USER^&secretkey=^PASS^&js_autodetect_results=1&just_logged_in=1:Unknown"`
@@ -82,3 +82,11 @@ Service Info: Host: SKYNET; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ## Recon
 
 - http://<machine ip>/45kra24zxs28v3yd is "Miles Dyson Personal Page"
+- Fuzz for additional directories
+    - `ffuf -w /usr/share/wordlists/SecLists/Discovery/Web-Content/raft-medium-directories.txt:FUZZ -u http://<target ip>/45kra24zxs28v3yd/FUZZ`
+    - Returns /administrator directory
+- http://<target ip>/45kra24zxs28v3yd/administrator gives a login page
+
+## Credential Access
+
+- 
