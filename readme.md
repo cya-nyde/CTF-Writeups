@@ -53,4 +53,4 @@
 - All machines were accessed and interacted with legally and with the permission of the respective host
 - Use this information at your own risk - I am not responsible for any damage caused by the misuse of any scripts or exploits referenced
 
-> 🛡️ **Always practice ethical hacking: Get explicit permission before testing any system that is not your own.**
+> **Always practice ethical hacking: Get explicit permission before testing any system that is not your own.**
