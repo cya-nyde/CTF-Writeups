@@ -23,6 +23,18 @@ Based on the Mr. Robot show, can you root this box?
     - **073403c8a58a1f80d943455fb30724b9**
 
 ## Recon
-    - Find hidden subdirectories
-        - `ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt:FUZZ -u http://<target ip>/FUZZ`
-    
+
+- Find hidden subdirectories
+    - `ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt:FUZZ -u http://<target ip>/FUZZ`
+        - Notable directories:
+            - /wp-login
+            - /readme
+            - /robots
+
+## Discovery
+
+- Found wordpress login page at /wp-login
+    - Potential usernames:
+        - root
+        - mr.robot
+        - user
