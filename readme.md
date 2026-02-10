@@ -10,26 +10,26 @@
 ```
 .
 ├── docs
-│   └── notes.md
+│   └── notes.md
 ├── HTB
-│   ├── cap.md
-│   ├── lame.md
-│   ├── nibbles.md
-│   └── twomillion
-│       ├── assets
-│       │   ├── 250714_16h48m23s_screenshot.png
-│       │   └── 250718_19h49m43s_screenshot.png
-│       ├── output
-│       │   └── inviteapi.min.js
-│       └── twomillion.md
+│   ├── cap.md
+│   ├── lame.md
+│   ├── nibbles.md
+│   └── twomillion
+│       ├── assets
+│       │   ├── 250714_16h48m23s_screenshot.png
+│       │   └── 250718_19h49m43s_screenshot.png
+│       ├── output
+│       │   └── inviteapi.min.js
+│       └── twomillion.md
 ├── OTW
-│   └── bandit
-│       ├── bandit0.md
-│       ├── bandit1.md
-│       ├── bandit2.md
-│       ├── bandit3.md
-│       ├── bandit4.md
-│       └── bandit5.md
+│   └── bandit
+│       ├── bandit0.md
+│       ├── bandit1.md
+│       ├── bandit2.md
+│       ├── bandit3.md
+│       ├── bandit4.md
+│       └── bandit5.md
 ├── readme.md
 └── THM
     ├── alfred.md
@@ -39,11 +39,11 @@
     ├── ice.md
     ├── introtocredentialharvesting.md
     ├── linprivesc.md
-    ├── skynet
-    │   ├── nmapOut
-    │   └── skynet.md
+    ├── mrrobot.md
+    ├── skynet.md
     ├── solar.md
-    └── steelmountain.md
+    ├── steelmountain.md
+    └── takeover.md
 ```
 
 ### Disclaimers
