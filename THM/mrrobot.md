@@ -21,6 +21,7 @@ Based on the Mr. Robot show, can you root this box?
 
 - Navigate to http://<target ip>/key-1-of-3.txt for **first key**
     - **073403c8a58a1f80d943455fb30724b9**
+- Download wordlist at /fsocity.dic
 
 ## Recon
 
@@ -30,11 +31,20 @@ Based on the Mr. Robot show, can you root this box?
             - /wp-login
             - /readme
             - /robots
+            - /license
 
 ## Discovery
 
 - Found wordpress login page at /wp-login
-    - Potential usernames:
-        - root
-        - mr.robot
-        - user
+- Found hash at /license: ZWxsaW90OkVSMjgtMDY1Mgo=
+    - Base64 encoded from: `elliot:ER28-0652`
+
+## Initial Access
+
+- Use credentials on /wp-login
+- Gained access to WP dashboard
+
+## Recon
+
+- Wordpress version 4.3.1 running Twenty Fifteen theme
+- Confirmed user "elliot" has Administrator role
