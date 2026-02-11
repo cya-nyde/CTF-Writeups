@@ -17,7 +17,7 @@ Based on the Mr. Robot show, can you root this box?
             fsocity.dic
             key-1-of-3.txt`
 
-### Discovery
+#### Discovery
 
 - Navigate to http://<target ip>/key-1-of-3.txt for **first key**
     - **073403c8a58a1f80d943455fb30724b9**
@@ -33,7 +33,7 @@ Based on the Mr. Robot show, can you root this box?
             - /robots
             - /license
 
-### Discovery
+#### Discovery
 
 - Found wordpress login page at /wp-login
 - Found hash at /license: ZWxsaW90OkVSMjgtMDY1Mgo=
@@ -78,3 +78,11 @@ Based on the Mr. Robot show, can you root this box?
 
 - Use meterpreter shell to download *password.raw-md5*
 
+### Privilege Escalation
+
+- *password.raw-md5* file contains a username:password hash pair
+    - `robot:c3fcd3d76192e4007dfb496cca67e13b`
+- Crack password hash
+    - `hashcat password.raw-md5 /usr/share/wordlists/rockyou.txt`
+- Login for user *robot*:
+    - robot:abcdefghijklmnopqrstuvwxyz
