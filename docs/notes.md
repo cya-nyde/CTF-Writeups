@@ -8,6 +8,16 @@ A collection of information regarding tools, exploits, services, tactics, etc. t
 Tools
 -----
 
+### [ffuf](https://github.com/ffuf/ffuf)
+
+#### Syntax
+
+<code>ffuf -w \<path to wordlist>:<FUZZ keyword (may specify multiple wordlists mapped to multiple fuzz keywords)> -u \<full url> -H \<Header (optional)>
+
+#### **Important Notes:**
+
+- Must add FUZZ keyword(s) into URL or header as the attack position
+
 ### [Hydra](https://github.com/vanhauser-thc/thc-hydra)
 
 Can be installed with `sudo apt install hydra`
