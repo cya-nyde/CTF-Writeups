@@ -203,5 +203,18 @@ Can be installed and enabled with <code>sudo apt install openssh</code> and <cod
 
 `ssh <username>@x.x.x.x`
 
-- Unless specified in line (bad practice), will prompt for password upon connection
+- Unless specified in-line (bad practice), will prompt for password upon connection
 - Often enabled when **port 22** is open
+
+### SMB
+
+From Linux, *smbclient* is used to access shares
+
+#### Syntax
+
+`smbclient //server/share`
+
+- ##### Options
+    - **U** followed by username%password to authenticate inline or just the username to prompt for password
+    - **N** prompts to enter user and password separately
+    - **W** Specifies workgroup name, if applicable
