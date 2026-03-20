@@ -1,4 +1,4 @@
-[Solar, exploiting log4j - TryHackMe](https://tryhackme.com/room/solar) | Cya-nyde
+[Solar, exploiting log4j - TryHackMe](https://tryhackme.com/room/solar) | 0x00FFFF
 ============================================================
 
 Explore CVE-2021-44228, a vulnerability in log4j affecting almost all software under the sun.
