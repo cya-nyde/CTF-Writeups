@@ -13,3 +13,15 @@
     - Ports 80 and 5000 serve web portals
 - Check for robots.txt
     - /robots.txt errors out on both port 80 and 5000
+- Check for other interesting directories
+    - `gobuster -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt -u http://<target ip>/FUZZ`
+        - /admin
+    - `gobuster -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt -u http://<target ip>:5000/FUZZ`
+        - /admin
+- Admin portal is accessible only by localhost
+
+## Resource Development
+
+- Craft a payload that attempts to access the page as localhost?
+    - Use Burpsuite/Caido to intercept and send custom packets
+    
