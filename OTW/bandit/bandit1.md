@@ -1,4 +1,4 @@
 # OverTheWire Bandit1
 
 - `ls`
-- `cat ./-` -> 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+- `cat ./-` -> PK8fYLZg2hnHSz83plBL1iEPKdD3QToB
