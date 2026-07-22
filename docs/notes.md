@@ -218,3 +218,20 @@ From Linux, *smbclient* is used to access shares
     - **U** followed by username%password to authenticate inline or just the username to prompt for password
     - **N** prompts to enter user and password separately
     - **W** Specifies workgroup name, if applicable
+
+### FTP/TFTP
+
+- **FTP** - File Transfer Protocol
+- **TFTP** - Trivial File Transfer Protocol
+
+#### Syntax
+
+- `ftp` is used to interact with the service
+- Common commands:
+    - **?** displays descriptions for commands
+    - **dir** shows content inside remote directory
+    - **disconnect** stays within FTP but disconnects from remote server
+    - **close** ends the FTP session
+    - **get** copies single remote file to local computer
+    - **put** copies single file from local computer to host
+
