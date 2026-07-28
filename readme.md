@@ -38,7 +38,9 @@
     ├── hackpark.md
     ├── ice.md
     ├── introtocredentialharvesting.md
+    ├── lafb2026e7.md
     ├── linprivesc.md
+    ├── md2pdf.md
     ├── mrrobot.md
     ├── skynet.md
     ├── solar.md
