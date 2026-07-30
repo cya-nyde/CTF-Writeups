@@ -3,54 +3,7 @@ Notes on Tools
 
 Previously included in general notes; syntax and usage for common enumeration, weaponization, and exploitation tools.
 
-### [ffuf](https://github.com/ffuf/ffuf)
-
-#### Syntax
-
-<code>ffuf -w \<path to wordlist>:<FUZZ keyword (may specify multiple wordlists mapped to multiple fuzz keywords)> -u \<full url> -H \<Header (optional)></code>
-
-#### **Important Notes:**
-
-- Must add FUZZ keyword(s) into URL or header as the attack position
-
-### [Hydra](https://github.com/vanhauser-thc/thc-hydra)
-
-Can be installed with `sudo apt install hydra`
-
-#### Syntax
-
-<code>hydra -l \<USER> -p \<PASS> \<target ip> -s \<target port> \<mode> "\<mode options>"</code>
-
-##### **Important Notes:**
-
-- Use `-l` for user if manually specifying and `-L` if using a wordlist
-- Use `-p` for pass if manually specifying and `-P` if using a wordlist
-
-#### Supported Services
-
-- ssh
-- http(s)-get
-- http(s)-post
-- http(s)-post-form
-- + more in Hydra's man page
-
-#### HTTP-Post-Form Example
-
-- `hydra -l admin -P /usr/share/wordlists/rockyou.txt 192.168.19.1 -s 8080 http-post-form "/login.php:username=^USER^&password=^PASS^:Invalid"`
-    - Put module options in ""
-    - Specified module is *http-post-form*
-    - /login.php is the login page
-    - *username* and *password* are the field arguments in the HTTP request
-        - You will need to use a proxy to figure out what the field names are before running this attack
-    - *Invalid* filters out responses with the word "Invalid" in the body
-
-### [Hashcat] (https://hashcat.net/hashcat/)
-
-Can be installed with `sudo apt install hashcat`
-
-#### Syntax
-
-<code>hashcat -a \<mode> -m \<hash type> \<hash file></code>
+## Enumeration
 
 ### [Nmap](https://nmap.org/)
 
@@ -115,6 +68,61 @@ Can be installed with `sudo apt install hashcat`
 * lookup CVEs from CLI
 * search by service name
     > Example: searchsploit Icecast 2.1
+
+## Web App
+
+### [ffuf](https://github.com/ffuf/ffuf)
+
+#### Syntax
+
+<code>ffuf -w \<path to wordlist>:<FUZZ keyword (may specify multiple wordlists mapped to multiple fuzz keywords)> -u \<full url> -H \<Header (optional)></code>
+
+#### **Important Notes:**
+
+- Must add FUZZ keyword(s) into URL or header as the attack position
+
+## Password
+
+### [Hydra](https://github.com/vanhauser-thc/thc-hydra)
+
+Can be installed with `sudo apt install hydra`
+
+#### Syntax
+
+<code>hydra -l \<USER> -p \<PASS> \<target ip> -s \<target port> \<mode> "\<mode options>"</code>
+
+##### **Important Notes:**
+
+- Use `-l` for user if manually specifying and `-L` if using a wordlist
+- Use `-p` for pass if manually specifying and `-P` if using a wordlist
+
+#### Supported Services
+
+- ssh
+- http(s)-get
+- http(s)-post
+- http(s)-post-form
+- + more in Hydra's man page
+
+#### HTTP-Post-Form Example
+
+- `hydra -l admin -P /usr/share/wordlists/rockyou.txt 192.168.19.1 -s 8080 http-post-form "/login.php:username=^USER^&password=^PASS^:Invalid"`
+    - Put module options in ""
+    - Specified module is *http-post-form*
+    - /login.php is the login page
+    - *username* and *password* are the field arguments in the HTTP request
+        - You will need to use a proxy to figure out what the field names are before running this attack
+    - *Invalid* filters out responses with the word "Invalid" in the body
+
+### [Hashcat] (https://hashcat.net/hashcat/)
+
+Can be installed with `sudo apt install hashcat`
+
+#### Syntax
+
+<code>hashcat -a \<mode> -m \<hash type> \<hash file></code>
+
+## C2
 
 ### [MetaSploit](https://www.metasploit.com/)
 
